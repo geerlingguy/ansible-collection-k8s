@@ -1,0 +1,17 @@
+---
+- import_playbook: ../default/prepare.yml
+
+- name: Prepare operator resources
+  hosts: localhost
+  connection: local
+
+  vars:
+    ansible_python_interpreter: '{{ ansible_playbook_python }}'
+    deploy_dir: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') }}/deploy"
+
+  tasks:
+    - name: Ensure default namespace is present
+      k8s:
+        api_version: v1
+        kind: Namespace
+        name: '{{ default_namespace }}'

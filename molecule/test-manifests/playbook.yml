@@ -1,0 +1,24 @@
+---
+- name: Converge
+  hosts: localhost
+  connection: local
+
+  collections:
+  - geerlingguy.k8s
+
+  vars:
+    ansible_python_interpreter: '{{ ansible_playbook_python }}'
+    k8s_manifests_base_dir: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') }}/roles/k8s_manifests/k8s-manifests/"
+    k8s_kubeconfig: "{{ lookup('env', 'KUBECONFIG') }}"
+    k8s_no_log: false
+
+  tasks:
+    - import_role:
+        name: k8s_manifests
+      vars:
+        k8s_manage_namespace: false
+        k8s_manifests:
+          - dir: storageclass
+            namespace: default
+
+- import_playbook: '{{ playbook_dir }}/asserts.yml'

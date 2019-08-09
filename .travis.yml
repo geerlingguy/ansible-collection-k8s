@@ -12,14 +12,15 @@ env:
 
 install:
   # Install test dependencies.
-  - pip install molecule docker
+  - pip install molecule docker openshift
 
-before_script:
-  # # Use actual Ansible Galaxy role name for the project directory.
-  # - cd ../
-  # - mv ansible-role-$ROLE_NAME geerlingguy.$ROLE_NAME
-  # - cd geerlingguy.$ROLE_NAME
+  # Install Ansible from source (only devel has full collection support).
+  - cd ../
+  - git clone https://github.com/ansible/ansible.git
+  - cd ansible
+  - source ./hacking/env-setup
+  - cd ../ansible-collection-$COLLECTION_NAME
 
 script:
-  # Run tests.
-  - molecule test
+  # Test k8s_manifests role.
+  - molecule test -s test-manifests
