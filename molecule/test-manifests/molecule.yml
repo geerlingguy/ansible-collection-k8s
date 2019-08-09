@@ -37,7 +37,7 @@ provisioner:
     ANSIBLE_ROLES_PATH: ${MOLECULE_PROJECT_DIRECTORY}/roles
     KIND_PORT: '${TEST_CLUSTER_PORT:-10443}'
 scenario:
-  name: test-manifest
+  name: test-manifests
   test_sequence:
     - lint
     - destroy

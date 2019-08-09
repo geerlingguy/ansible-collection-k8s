@@ -7,8 +7,7 @@ env:
     - COLLECTION_NAMESPACE: geerlingguy
     - COLLECTION_NAME: k8s
   matrix:
-    - MOLECULE_DISTRO: centos7
-    - MOLECULE_DISTRO: ubuntu1804
+    - MOLECULE_DISTRO: default
 
 install:
   # Install test dependencies.
