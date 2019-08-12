@@ -149,10 +149,10 @@ class KubernetesTemplateModule(KubernetesRawModule):
             # For templates, template each definition before applying it.
             template = self.params.get('template')
             if template:
-                # TODO: Find a way to get all currently-available vars.
+                # TODO: Is there a way we can get all the available vars, e.g.
+                # via action plugin or something, to pass to Templar()?
                 all_vars = {
-                    "namespace_to_test": "modulelevel",
-                    "another_var_key": "value"
+                    "test_key": "test-value",
                 }
                 loader = DataLoader()
                 definition = Templar(loader=loader, variables=all_vars).template(definition)
