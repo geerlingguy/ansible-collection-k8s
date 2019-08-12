@@ -15,20 +15,22 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 
-module: k8s
+module: k8s_template
 
-short_description: Manage Kubernetes (K8s) objects
+short_description: Manage Kubernetes (K8s) objects with built-in templating
 
-version_added: "2.6"
+version_added: "2.9"
 
 author:
     - "Chris Houseknecht (@chouseknecht)"
     - "Fabian von Feilitzsch (@fabianvf)"
+    - "Jeff Geerling (@geerlingguy)
 
 description:
   - Use the OpenShift Python client to perform CRUD operations on K8s objects.
   - Pass the object definition from a source file or inline. See examples for reading
     files and using Jinja templates or vault-encrypted files.
+  - Pass one or more object definitions from a source file with Jinja templating.
   - Access to the full range of K8s APIs.
   - Use the M(k8s_info) module to obtain a list of items about an object of type C(kind)
   - Authenticate using either a config file, certificates, password or token.
@@ -48,6 +50,12 @@ notes:
     remove it from openshift or kubernetes.
 
 options:
+  template:
+    description:
+    - TODO
+    default: no
+    type: string
+    version_added: "2.9"
   merge_type:
     description:
     - Whether to override the default patch merge approach with a specific type. By default, the strategic
@@ -264,11 +272,11 @@ result:
        sample: 48
 '''
 
-from ansible.module_utils.k8s.raw import KubernetesRawModule
+from ansible_collections.geerlingguy.k8s.plugins.module_utils.k8s import KubernetesTemplateModule
 
 
 def main():
-    KubernetesRawModule().execute_module()
+    KubernetesTemplateModule().execute_module()
 
 
 if __name__ == '__main__':

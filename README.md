@@ -39,9 +39,17 @@ Then you can use the roles from the collection in your playbooks:
 
 Currently, all the Kubernetes roles (inside `roles/`) are Git submodules, and work on the roles themselves should take place in the upstream Role repository. At some point, the roles might move into this repository for their canonical home.
 
-This collection has some integration tests (inside `tests/`), however, which pull all the roles together and ensure they work in tandem on the latest supported platforms.
+This collection has some integration tests (inside `molecule/`), however, which pull all the roles together and ensure they work in tandem on the latest supported platforms.
 
-TODO: Instructions for running tests.
+To run a particular test scenario, you need to install molecule and the OpenShift Python client (`pip install molecule openshift`), then you can run:
+
+    molecule test -s [scenario]
+
+For example, to run the k8s_manifests role test scenario:
+
+    molecule test -s test-manifests
+
+If you would like to develop the collection or leave a scenario running for debugging, use `molecule converge` to run the scenario but not tear down the local test environment.
 
 ### Pushing a new version
 
