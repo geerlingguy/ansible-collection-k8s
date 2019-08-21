@@ -35,6 +35,7 @@ provisioner:
     K8S_AUTH_KUBECONFIG: /tmp/molecule/kind-test-local/kubeconfig
     KUBECONFIG: /tmp/molecule/kind-test-local/kubeconfig
     ANSIBLE_ROLES_PATH: ${MOLECULE_PROJECT_DIRECTORY}/roles
+    ANSIBLE_COLLECTIONS_PATHS: "/home/travis/build/geerlingguy:~/.ansible/collections"
     KIND_PORT: '${TEST_CLUSTER_PORT:-10443}'
 scenario:
   name: test-manifests

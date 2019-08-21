@@ -20,3 +20,14 @@
     - name: Verify the custom EBS StorageClass is present.
       assert:
         that: "{{ 'kubernetes.io/aws-ebs' in storageclass | to_nice_json }}"
+
+    - name: Get all namespaces.
+      k8s_facts:
+        api_version: v1
+        kind: Namespace
+      register: all_namespaces
+      delegate_to: localhost
+
+    - name: Verify the k8s_template-generated namespace is present.
+      assert:
+        that: "{{ 'k8s-template-test' in all_namespaces | to_nice_json }}"

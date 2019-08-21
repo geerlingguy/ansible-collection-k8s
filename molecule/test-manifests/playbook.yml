@@ -13,12 +13,21 @@
     k8s_no_log: false
 
   tasks:
-    - import_role:
+    - name: Test k8s_manifests role.
+      import_role:
         name: k8s_manifests
       vars:
         k8s_manage_namespace: false
         k8s_manifests:
           - dir: storageclass
             namespace: default
+
+    - name: Test k8s_template module.
+      k8s_template:
+        api_version: v1
+        kind: Namespace
+        name: k8s-template-test
+        state: present
+        kubeconfig: "{{ k8s_kubeconfig }}"
 
 - import_playbook: '{{ playbook_dir }}/asserts.yml'

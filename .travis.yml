@@ -18,8 +18,14 @@ install:
   - git clone https://github.com/ansible/ansible.git
   - cd ansible
   - source ./hacking/env-setup
-  - cd ../ansible-collection-$COLLECTION_NAME
+  - cd ../
+
+before_script:
+  # Move the collection into the required path.
+  - mkdir -p ansible_collections/$COLLECTION_NAMESPACE
+  - mv ansible-collection-$COLLECTION_NAME ansible_collections/$COLLECTION_NAMESPACE/$COLLECTION_NAME
+  - cd ansible_collections/$COLLECTION_NAMESPACE/$COLLECTION_NAME
 
 script:
-  # Test k8s_manifests role.
+  # Test k8s_manifests role and k8s_template module.
   - molecule test -s test-manifests
