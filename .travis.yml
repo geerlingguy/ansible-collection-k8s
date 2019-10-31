@@ -11,14 +11,7 @@ env:
 
 install:
   # Install test dependencies.
-  - pip install molecule docker openshift
-
-  # Install Ansible from source (only devel has full collection support).
-  - cd ../
-  - git clone https://github.com/ansible/ansible.git
-  - cd ansible
-  - source ./hacking/env-setup
-  - cd ../
+  - pip install ansible molecule docker openshift
 
 before_script:
   # Move the collection into the required path.
