@@ -62,8 +62,6 @@ Currently the process of building and pushing a new version artifact to Galaxy i
   1. Build the collection artifact: `ansible-galaxy collection build`
   1. Publish the collection artifact: `ansible-galaxy collection publish ./geerlingguy-k8s-1.2.3.tar.gz --api-key=[key goes here]`
 
-> Note: The above commands require Ansible 2.9 (Ansible's `devel` branch as of mid-2019) or later.
-
 ## Author
 
 This collection was created in 2019 by [Jeff Geerling](https://www.jeffgeerling.com/), author of [Ansible for DevOps](https://www.ansiblefordevops.com/) and [Ansible for Kubernetes](https://www.ansibleforkubernetes.com).

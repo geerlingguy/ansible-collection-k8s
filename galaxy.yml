@@ -2,7 +2,7 @@
 namespace: geerlingguy
 name: k8s
 description: An elegant collection of Kuberenetes automation tools.
-version: "0.9.1"
+version: "0.9.2"
 readme: README.md
 authors:
   - geerlingguy (https://www.jeffgeerling.com/)
