@@ -22,13 +22,4 @@
           - dir: storageclass
             namespace: default
 
-    # This module is not yet working; needs to be converted to action plugin.
-    # - name: Test k8s_template module.
-    #   k8s_template:
-    #     api_version: v1
-    #     kind: Namespace
-    #     name: k8s-template-test
-    #     state: present
-    #     kubeconfig: "{{ k8s_kubeconfig }}"
-
 - import_playbook: '{{ playbook_dir }}/asserts.yml'

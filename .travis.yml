@@ -11,7 +11,7 @@ env:
 
 install:
   # Install test dependencies.
-  - pip install ansible molecule docker openshift
+  - pip install ansible molecule yamllint ansible-lint docker openshift
 
 before_script:
   # Move the collection into the required path.
@@ -21,5 +21,5 @@ before_script:
   - cd ansible_collections/$COLLECTION_NAMESPACE/$COLLECTION_NAME
 
 script:
-  # Test k8s_manifests role and k8s_template module.
+  # Run test-manifests scenario.
   - molecule test -s test-manifests

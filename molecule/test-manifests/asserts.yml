@@ -10,7 +10,7 @@
 
   tasks:
     - name: Get all StorageClass objects.
-      k8s_facts:
+      k8s_info:
         api_version: v1
         kind: StorageClass
         namespace: '{{ default_namespace }}'
@@ -22,13 +22,8 @@
         that: "{{ 'kubernetes.io/aws-ebs' in storageclass | to_nice_json }}"
 
     - name: Get all namespaces.
-      k8s_facts:
+      k8s_info:
         api_version: v1
         kind: Namespace
       register: all_namespaces
       delegate_to: localhost
-
-    # This module is not yet working; needs to be converted to action plugin.
-    # - name: Verify the k8s_template-generated namespace is present.
-    #   assert:
-    #     that: "{{ 'k8s-template-test' in all_namespaces | to_nice_json }}"
