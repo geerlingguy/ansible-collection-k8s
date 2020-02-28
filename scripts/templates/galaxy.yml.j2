@@ -2,7 +2,7 @@
 namespace: geerlingguy
 name: k8s
 description: An elegant collection of Kuberenetes automation tools.
-version: "0.9.2"
+version: "{{ tag }}"
 readme: README.md
 authors:
   - geerlingguy (https://www.jeffgeerling.com/)
@@ -30,3 +30,7 @@ repository: https://github.com/geerlingguy/ansible-collection-k8s
 documentation: https://github.com/geerlingguy/ansible-collection-k8s
 # homepage: ""
 issues: https://github.com/geerlingguy/ansible-collection-k8s/issues
+build_ignore:
+  - scripts
+  - molecule
+  - .DS_Store

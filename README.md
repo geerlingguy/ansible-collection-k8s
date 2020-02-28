@@ -53,14 +53,15 @@ If you would like to develop the collection or leave a scenario running for debu
 
 ### Pushing a new version
 
-Currently the process of building and pushing a new version artifact to Galaxy is manual. This process will be automated based on tags/releases via Travis CI soon, but for now, here is how to release a new version:
+Before tagging a new version, make sure all the git submodules are up to date:
 
-  1. Update all the git submodules: `git submodule update --recursive --remote`
-  1. Push the changes, make sure the CI build is still passing.
-  1. If CI passes, update the `version` string in `galaxy.yml` to match the version of the collection you wish to publish.
-  1. Tag the new version in the git repository and push it.
-  1. Build the collection artifact: `ansible-galaxy collection build`
-  1. Publish the collection artifact: `ansible-galaxy collection publish ./geerlingguy-k8s-1.2.3.tar.gz --api-key=[key goes here]`
+    git submodule update --recursive --remote
+
+Then commit and push all changes, and make sure all tests are passing.
+
+Then tag the new version of the collection and push the tag.
+
+Once pushed, if tests pass, Travis CI will deploy the new collection version using the playbook in `scripts/deploy.yml`. That directory also contains the `galaxy.yml` template that will be used to build the collection metadata.
 
 ## Author
 

@@ -23,3 +23,10 @@ before_script:
 script:
   # Run test-manifests scenario.
   - molecule test -s test-manifests
+
+deploy:
+  provider: script
+  script: ansible-playbook -i 'localhost,' scripts/deploy.yml -e "tag=$TRAVIS_TAG"
+  'on':
+    tags: true
+    condition: $DISTRO = default
