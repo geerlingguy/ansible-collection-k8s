@@ -8,6 +8,7 @@ It includes:
 
   - [geerlingguy.kubernetes](https://github.com/geerlingguy/ansible-role-kubernetes)
   - [geerlingguy.k8s_manifests](https://github.com/geerlingguy/ansible-role-k8s_manifests)
+  - [geerlingguy.helm](https://github.com/geerlingguy/ansible-role-helm)
 
 ## Usage
 
@@ -25,6 +26,7 @@ Then you can use the roles from the collection in your playbooks:
     
       roles:
         - kubernetes
+        - helm
         - role: k8s_manifests
           vars:
             k8s_manifests_base_dir: ''
