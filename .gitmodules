@@ -6,4 +6,4 @@
 	url = https://github.com/geerlingguy/ansible-role-k8s_manifests.git
 [submodule "roles/helm"]
 	path = roles/helm
-	url = git@github.com:geerlingguy/ansible-role-helm.git
+	url = https://github.com/geerlingguy/ansible-role-helm.git
