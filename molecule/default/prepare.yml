@@ -24,6 +24,7 @@
         regexp: "8443"
         replace: "{{ lookup('env', 'KIND_PORT') }}"
         path: '{{ kubeconfig }}'
+        mode: preserve
       delegate_to: localhost
 
     - name: Wait for the Kubernetes API to become available (this could take a minute)
