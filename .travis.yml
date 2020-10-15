@@ -15,7 +15,7 @@ before_install:
 
 install:
   # Install test dependencies.
-  - pip install ansible molecule yamllint ansible-lint docker openshift
+  - pip install ansible molecule[docker] yamllint ansible-lint docker openshift
 
 before_script:
   # Move the collection into the required path.
